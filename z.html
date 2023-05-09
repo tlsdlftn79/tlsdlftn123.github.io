@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>실시간 동접자 보기</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+	<h1>실시간 동접자 보기</h1>
+	<div id="playerCount"></div>
+
+	<script>
+		var apiKey = "D17C03AE1CFBCC716F96629197A10A35";
+		var appId = "1825750";
+
+		function updatePlayerCount() {
+			$.getJSON("https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?appid=" + appId + "&key=" + apiKey, function(result) {
+				var playerCount = result.response.player_count;
+				$("#playerCount").text("현재 동접자 수: " + playerCount);
+			})
+			.fail(function(jqXHR, textStatus, errorThrown) {
+				console.log("API 요청에 실패하였습니다.");
+			});
+		}
+
+		updatePlayerCount();
+		setInterval(updatePlayerCount, 5000); // 5초마다 업데이트
+	</script>
+</body>
+</html>
