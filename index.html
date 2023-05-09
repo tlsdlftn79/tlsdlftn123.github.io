@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>½Ç½Ã°£ µ¿Á¢ÀÚ º¸±â</title>
+	<title>ì‹¤ì‹œê°„ ë™ì ‘ì ë³´ê¸°</title>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-	<h1>½Ç½Ã°£ µ¿Á¢ÀÚ º¸±â</h1>
+	<h1>ì‹¤ì‹œê°„ ë™ì ‘ì ë³´ê¸°</h1>
 	<div id="playerCount"></div>
 
 	<script>
@@ -15,15 +15,15 @@
 		function updatePlayerCount() {
 			$.getJSON("https://api.steampowered.com/ISteamUserStats/GetNumberOfCurrentPlayers/v1/?appid=" + appId + "&key=" + apiKey, function(result) {
 				var playerCount = result.response.player_count;
-				$("#playerCount").text("ÇöÀç µ¿Á¢ÀÚ ¼ö: " + playerCount);
+				$("#playerCount").text("í˜„ì¬ ë™ì ‘ì ìˆ˜: " + playerCount);
 			})
 			.fail(function(jqXHR, textStatus, errorThrown) {
-				console.log("API ¿äÃ»¿¡ ½ÇÆĞÇÏ¿´½À´Ï´Ù.");
+				console.log("API ìš”ì²­ì— ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤.");
 			});
 		}
 
 		updatePlayerCount();
-		setInterval(updatePlayerCount, 5000); // 5ÃÊ¸¶´Ù ¾÷µ¥ÀÌÆ®
+		setInterval(updatePlayerCount, 5000); // 5ì´ˆë§ˆë‹¤ ì—…ë°ì´íŠ¸
 	</script>
 </body>
 </html>
